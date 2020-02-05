@@ -7,10 +7,16 @@ import java.util.Map;
 
 public class World {
 
-    private Map<Coordinates, Cell> cellMap;
+    private final Map<Coordinates, Cell> cellMap;
 
-    private World(Map<Coordinates, Cell> cellMap) {
+    private final int rows;
+
+    private final int cols;
+
+    private World(Map<Coordinates, Cell> cellMap, int rows, int cols) {
         this.cellMap = cellMap;
+        this.rows = rows;
+        this.cols = cols;
     }
 
     public static World createWorld(boolean[][] board) {
@@ -23,7 +29,7 @@ public class World {
                 cellMap.put(coordinates, cell);
             }
         }
-        return new World(cellMap);
+        return new World(cellMap, board.length, board[0].length);
     }
 
     public List<Cell> getCells() {
@@ -38,10 +44,13 @@ public class World {
             boolean alive = GameOfLifeRules.apply(cell, countLivingNeighbors);
             newCellMap.put(coordinates, new Cell(coordinates, alive));
         }
-        return new World(newCellMap);
+        return new World(newCellMap, this.rows, this.cols);
     }
 
     private int getCountLivingNeighbors(Cell cell) {
-        return 0;
+        Coordinates coordinates = cell.getCoordinates();
+        List<Coordinates> neighbors = NeighborCalculator.getNeighbors(coordinates, this.rows, this.cols);
+        return (int) cellMap.values().stream().filter(c -> c.isAlive() && neighbors.contains(c.getCoordinates())).count();
     }
+
 }

@@ -10,7 +10,7 @@ class GameOfLifeTest {
 
     @Test
     void should_create_world() {
-        boolean board[][] = new boolean[0][0];
+        boolean board[][] = new boolean[1][1];
 
         GameOfLife gol = new GameOfLife(board);
         World world = gol.getWorld();
@@ -20,7 +20,7 @@ class GameOfLifeTest {
 
     @Test
     void nextGen_should_create_new_world() {
-        boolean board[][] = new boolean[0][0];
+        boolean board[][] = new boolean[1][1];
         GameOfLife gol = new GameOfLife(board);
         World world = gol.getWorld();
 
