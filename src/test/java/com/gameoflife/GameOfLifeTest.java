@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameOfLifeTest {
 
@@ -29,5 +30,6 @@ class GameOfLifeTest {
         assertNotNull(world);
         assertNotNull(newWorld);
         assertNotEquals(world, newWorld);
+        assertTrue(world.getCells().size() == newWorld.getCells().size());
     }
 }

@@ -31,6 +31,11 @@ public class World {
     }
 
     public World nextGen() {
-        return new World(cellMap);
+        Map<Coordinates, Cell> newCellMap = new LinkedHashMap<>();
+        for (Cell cell : cellMap.values()) {
+            Coordinates coordinates = cell.getCoordinates();
+            newCellMap.put(coordinates, new Cell(coordinates, cell.isAlive()));
+        }
+        return new World(newCellMap);
     }
 }
