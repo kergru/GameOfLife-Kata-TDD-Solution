@@ -1,6 +1,4 @@
-======================================
-Game-of-Life Requirements Specification
-======================================
+# Game-of-Life Requirements Specification
 
 Implement a finite version of Conway's Game of Life.
 
