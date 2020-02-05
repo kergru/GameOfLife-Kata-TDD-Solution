@@ -12,7 +12,8 @@ public class World {
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
                 boolean alive = board[row][col];
-                Cell cell = new Cell(alive);
+                Coordinates coordinates = new Coordinates(row, col);
+                Cell cell = new Cell(coordinates, alive);
                 cells.add(cell);
             }
         }
