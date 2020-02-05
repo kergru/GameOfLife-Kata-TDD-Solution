@@ -6,9 +6,15 @@ public class GameOfLife {
 
     public GameOfLife(boolean[][] board) {
         world = new World(board);
-    };
+    }
 
-    public void nextGen() {};
+    ;
+
+    public void nextGen() {
+        world = world.nextGen();
+    }
+
+    ;
 
     public World getWorld() {
         return world;

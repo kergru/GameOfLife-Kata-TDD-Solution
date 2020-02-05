@@ -21,7 +21,15 @@ public class World {
         }
     }
 
+    public World(Map<Coordinates, Cell> cellMap) {
+        this.cellMap = cellMap;
+    }
+
     public List<Cell> getCells() {
         return new ArrayList<>(cellMap.values());
+    }
+
+    public World nextGen() {
+        return new World(cellMap);
     }
 }
