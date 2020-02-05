@@ -53,4 +53,17 @@ public class World {
         return (int) cellMap.values().stream().filter(c -> c.isAlive() && neighbors.contains(c.getCoordinates())).count();
     }
 
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        Cell current = null;
+        for (Cell cell : cellMap.values()) {
+            if (current != null && current.getCoordinates().getX() != cell.getCoordinates().getX()) {
+                sb.append("\n");
+            }
+            sb.append(cell.isAlive() ? " #" : " .");
+            current = cell;
+        }
+        sb.append("\n");
+        return sb.toString();
+    }
 }
