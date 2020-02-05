@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WorldTest {
 
@@ -13,7 +16,7 @@ class WorldTest {
         boolean board[][] = new boolean[1][1];
         board[0][0] = true;
 
-        World world = new World(board);
+        World world = World.createWorld(board);
         List<Cell> cells = world.getCells();
 
         assertNotNull(cells);
@@ -26,7 +29,7 @@ class WorldTest {
         boolean board[][] = new boolean[1][1];
         board[0][0] = false;
 
-        World world = new World(board);
+        World world = World.createWorld(board);
         List<Cell> cells = world.getCells();
 
         assertNotNull(cells);
@@ -42,14 +45,14 @@ class WorldTest {
         board[0][1] = false;
         board[1][1] = false;
 
-        World world = new World(board);
+        World world = World.createWorld(board);
         List<Cell> cells = world.getCells();
 
         assertNotNull(cells);
         assertTrue(cells.size() == 4);
-        assertEquals(cells.get(0).getCoordinates(), new Coordinates(0,0));
-        assertEquals(cells.get(1).getCoordinates(), new Coordinates(0,1));
-        assertEquals(cells.get(2).getCoordinates(), new Coordinates(1,0));
-        assertEquals(cells.get(3).getCoordinates(), new Coordinates(1,1));
+        assertEquals(cells.get(0).getCoordinates(), new Coordinates(0, 0));
+        assertEquals(cells.get(1).getCoordinates(), new Coordinates(0, 1));
+        assertEquals(cells.get(2).getCoordinates(), new Coordinates(1, 0));
+        assertEquals(cells.get(3).getCoordinates(), new Coordinates(1, 1));
     }
 }

@@ -9,8 +9,12 @@ public class World {
 
     private Map<Coordinates, Cell> cellMap;
 
-    public World(boolean[][] board) {
-        cellMap = new LinkedHashMap<>();
+    private World(Map<Coordinates, Cell> cellMap) {
+        this.cellMap = cellMap;
+    }
+
+    public static World createWorld(boolean[][] board) {
+        Map<Coordinates, Cell> cellMap = new LinkedHashMap<>();
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
                 boolean alive = board[row][col];
@@ -19,10 +23,7 @@ public class World {
                 cellMap.put(coordinates, cell);
             }
         }
-    }
-
-    public World(Map<Coordinates, Cell> cellMap) {
-        this.cellMap = cellMap;
+        return new World(cellMap);
     }
 
     public List<Cell> getCells() {
