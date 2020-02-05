@@ -11,7 +11,8 @@ public class World {
         cells = new ArrayList<>();
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
-                Cell cell = new Cell();
+                boolean alive = board[row][col];
+                Cell cell = new Cell(alive);
                 cells.add(cell);
             }
         }
