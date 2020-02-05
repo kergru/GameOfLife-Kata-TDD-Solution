@@ -2,7 +2,15 @@ package com.gameoflife;
 
 public class GameOfLife {
 
-    public GameOfLife(boolean[][] board) {};
+    private World world;
+
+    public GameOfLife(boolean[][] board) {
+        world = new World(board);
+    };
 
     public void nextGen() {};
+
+    public World getWorld() {
+        return world;
+    }
 }
