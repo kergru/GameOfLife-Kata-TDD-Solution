@@ -34,8 +34,14 @@ public class World {
         Map<Coordinates, Cell> newCellMap = new LinkedHashMap<>();
         for (Cell cell : cellMap.values()) {
             Coordinates coordinates = cell.getCoordinates();
-            newCellMap.put(coordinates, new Cell(coordinates, cell.isAlive()));
+            int countLivingNeighbors = getCountLivingNeighbors(cell);
+            boolean alive = GameOfLifeRules.apply(cell, countLivingNeighbors);
+            newCellMap.put(coordinates, new Cell(coordinates, alive));
         }
         return new World(newCellMap);
+    }
+
+    private int getCountLivingNeighbors(Cell cell) {
+        return 0;
     }
 }
